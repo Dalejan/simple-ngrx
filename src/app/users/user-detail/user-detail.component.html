@@ -1,0 +1,16 @@
+<div class="card-columns">
+  <ng-container *ngIf="loading$ | async; else notLoading">
+    Cargando ...
+  </ng-container>
+  <p *ngIf="error$ | async as error">
+    {{error.status}}
+  </p>
+
+  <ng-template #notLoading>
+    <div *ngIf="user$ | async as user">
+      <img class="card-img-top" [src]="user.avatar">
+
+      {{user.first_name}} {{user.last_name}}
+    </div>
+  </ng-template>
+</div>
